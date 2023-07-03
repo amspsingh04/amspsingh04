@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <title>S P Singh</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+                <nav>
+                <img src="Images\logo.jpg" class="logo">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Resume</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                </nav>
+                <div class="parallax-container">
+                    
+                    <div class="parallax-content">
+                        
+                <div class="header-text">
+                    <p>CS Sophomore at VITC</p>
+                    <h1> Hi, I am <span>Shourya <br>Pratap Singh</span><br> from India</h1>
+                </div>
+                
+            </div>
+        </div>
+            </div>
+        </div>
+        <div id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="about-col-1">
+                        <img src="\Images\main bgm.jpg" alt="">
+                    </div>
+                    <div class="about-col-2">
+                        <h1 class="subtitle">About Me</h1>
+                        <p>
+                            I am a second year student at VIT Chennai, studying Computer Science with Specialization in Cyber Physical Systems. <br> I am interested in technologies such as Cloud Computing, AI/ML, metaverse, computer vision, and Digital Twins - technologies which can be used as comprehensive solutions for real world problems.<br>I have previously worked on certain projects like Symptoms Tracker, Social Media monitoring tool, Femunity and I would like to know how my existing knowledge can be expanded and areas where I can research and develop newer and better solutions.                            
+                        </p>
+
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('Stack')">Stack</p>
+                            <p class="tab-links" onclick="opentab('Education')">Education</p>
+                            <p class="tab-links" onclick="opentab('Achievements')">Achievements</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="Stack">
+                            <ul>
+                                <li><span>Data Science</span><br>Python<br>TF Keras</li>
+                                <li><span>Web Dev</span><br>HTML<br>CSS<br>JS</li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-contents" id="Education">
+                            <ul>
+                                <li><span>BTech CSE</span><br>Specialising in <br>Cyber Physical Systems</li>
+                                <li>CGPA:9.30<br>VIT Chennai 2022 - 2026</li>
+                                <li><span>Class 12 - CBSE</span><br>The Orbis School, 2022<br>E-PCM-IP 94.8%</li>
+                                <li><span>Class 10 - ICSE</span><br>The Bishops School, 2020<br>96.8%</li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-contents" id="Achievements">
+                            <ul>
+                                <li><span>GCCP '22</span><br></li>
+                                <li><span>Stanford CIP '22</span><br></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="portfolio">
+            <div class="container">
+                <h1 class="sub-title">Projects</h1>
+                <div class="work-list">
+                    <div class="work">
+                      <img src="Images\work 1.jpg">
+                      <div class="layer">
+                        <h3>Symptoms Tracker</h3>
+                        <p>Helps you track your symptoms</p>
+                        <a href="https://github.com/amspsingh04/symptom_tracker"><i class="fas fa-link"></i></a>
+                      </div>
+                    </div>
+                    <div class="work">
+                      <img src="Images\work 2.jpg">
+                      <div class="layer">
+                        <h3>Social Media Monitoring Tool</h3>
+                        <p>Scrapes Twitter according to given keyword</p>
+                        <a href="https://github.com/amspsingh04/cyberx_nirvanaaa"><i class="fas fa-link"></i></a>
+                      </div>
+                    </div>
+                    <div class="work">
+                      <img src="Images\Google_Forms_2020_Logo.svg (1).png">
+                      <div class="layer">
+                        <h3>Form Filler</h3>
+                        <p>Automates Google Form filling</p>
+                        <a href="https://github.com/amspsingh04/form-filler"><i class="fas fa-link"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                <a href="https://tinyurl.com/amspsingh04" class="btn"> See Resume</a>
+
+            </div>            
+        </div>
+
+        <div class="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="contact-left">
+                        <h1 class=""sub-title">Contact me!</h1>
+                        <p>amspsingh04@gmail.com</p>
+                        <div class="social-icons">
+                            <a href="linkedin.com/in/amspsingh04"><i class="fab fa-linkedin-in">Linkedin</i></a>
+                            <a href="instagram.com/amspsingh04"><i class="fab fa-instagram">Instagram</i></a>
+                            <a href="twitter.com/S_P_S_4"><i class="fab fa-twitter">Twitter</i></a>
+                        </div>
+                    </div>
+                    <div class="contact-right">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+
+            function opentab(tabname){
+                for(tablink of tablinks){
+                    tablink.classList.remove("active-link");
+                }
+                for(tabcontent of tabcontents){
+                    tabcontent.classList.remove("active-tab");
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab");
+            }
+        </script>
+    </body>
+</html>
