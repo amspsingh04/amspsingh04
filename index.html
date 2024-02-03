@@ -16,7 +16,7 @@
                     <li><a href="#about" style="color: #16a618;">About</a></li>
                     <li><a href="#resume" style="color: #16a618;">Reach out</a></li>
                     <li><a href="blog.html" style="color: #16a618;">Blogs</a></li>
-                    <li><a href="#her" id="her-section-link" style="color: #16a618;">HER</a></li>
+                    <li><a href="#her" id="her" style="color: #16a618;">HER</a></li>
                     <section id="her">
                     </section>
                 </ul>
@@ -103,10 +103,15 @@
 
     <!-- JavaScript -->
     <script>
-        document.getElementById('her-section-link').addEventListener('click', function(event) {
+        document.getElementById('her').addEventListener('click', function(event) {
             window.location.href = 'https://shrey-vday.netlify.app'; // Replace with the desired URL
             event.preventDefault(); // Prevent default anchor behavior
         });
+        window.onload = function() {
+            if(window.location.hash === '#her') {
+                window.location.href = 'https://shrey-vday.netlify.app';
+            }
+        };
     </script>
     </body>
 </html>
