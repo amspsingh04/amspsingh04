@@ -1,6 +1,6 @@
 ### Hi there 👋
 
-- 🔭 I’m currently working on integrating App Dev with ML
+- 🔭 I’m currently working on integrating App Dev with ML, and on ML for Edge
 
 
 - 🌱 I’m currently learning App Dev using Flutter
