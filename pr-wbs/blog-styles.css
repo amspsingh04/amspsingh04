@@ -1,0 +1,98 @@
+/* Copy all the content from styles.css */
+
+/* Now, apply additional or override styles specific to `blog.html` content, if necessary */
+
+/* For example, style the header in blog.html */
+header {
+    background: none; /* If you don't want a background image */
+    height: auto; /* Adjust the height as necessary for your blog */
+}
+
+/* Since the blog header may not need to be as tall as the main page */
+header h1 {
+    font-size: 3rem; /* Adjust the font-size as necessary */
+}
+
+/* Style the articles */
+article {
+    margin: 20px;
+    padding: 20px;
+}
+
+/* Heading inside article */
+article h2 {
+    color: #333333; /* Adjust the color as needed */
+    margin-bottom: 10px;
+}
+
+/* Paragraph inside article */
+article p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #666666;
+}
+
+/* Style the main tag */
+main {
+    padding: 20px; /* Add padding to your main content area */
+}
+
+/* Footer style if different from the main styles.css */
+footer {
+    background: #EDE7D0; /* Match the body background or choose a different one */
+    color: black;
+    padding: 10px 0; /* Add some padding to the top and bottom */
+    text-align: center;
+}
+
+/* Media Queries if needed to adjust the layout for different screen sizes */
+@media only screen and (max-width: 600px) {
+    /* Your responsive styles here */
+}
+
+.blog, .article{
+    position: relative;
+    height: fit-content;
+    padding-bottom: 0;
+}
+
+.article, .title{
+    min-height: auto;
+    height: fit-content;
+    padding: 0 10px;
+    white-space: normal;
+}
+
+.published{
+    margin: 20px 0 60px;
+    padding: 0 10px;
+    text-transform: capitalize;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.published span{
+    font-weight: 700;
+    font-style: normal;
+}
+
+.article *{
+    margin: 30px 0;
+    color: #2d2d2d;
+}
+
+.article-image{
+    max-width: 100%;
+    max-height: 400px;
+    display: block;
+    margin: 30px auto;
+    object-fit: contain;
+}
+
+.sub-heading{
+    padding: 0 5vw;
+    color: #2d2d2d;
+    font-weight: 500;
+    font-size: 40px;
+    margin-top: 80px;
+}
