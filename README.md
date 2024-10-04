@@ -12,3 +12,6 @@
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=amspsingh04&theme=tokyonight" alt="mystreak"/>
 
 [![Shourya's GitHub stats](https://github-readme-stats.vercel.app/api?username=amspsingh04)](https://github.com/anuraghazra/github-readme-stats)
+
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=amspsingh04)](https://github.com/amspsingh04/github-readme-stats)
