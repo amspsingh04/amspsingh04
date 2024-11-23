@@ -1,6 +1,7 @@
 import React from 'react';
 import './Intro.css';
 import { Link } from 'react-router-dom';
+import p1 from './photo1.jpg';
 
 const Intro = () => (
   <div>
@@ -29,7 +30,7 @@ const Intro = () => (
     <section id="about">
       <div className="about-section">
         <div className="about-image">
-        <img src="./photo1.jpg" alt="Main Background" />
+        <img src={p1} alt="Main Background" />
         </div>
         <div className="about-content">
           <h1>About Me</h1>

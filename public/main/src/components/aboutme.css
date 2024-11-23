@@ -1,0 +1,92 @@
+.about-me {
+    font-family: Arial, sans-serif;
+    background-color: #f5e6cc;
+  }
+  
+  .about-me h2 {
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .timeline {
+    position: relative;
+    margin: 20px 0;
+    padding-left: 20px; /* Reduced padding since circles are removed */
+    border-left: 3px solid #f5e6cc; /* Keeps the vertical line */
+  }
+  
+  .timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+  }
+  
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .timeline-date {
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+  
+  .timeline-content {
+    background: #f5e6cc;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+  }
+  
+  .timeline-content h3 {
+    margin: 0 0 10px;
+    color: #387400;
+  }
+  
+  .timeline-content p {
+    margin: 0;
+    color: #333;
+  }
+  
+  .timeline-item.highlight .timeline-date {
+    background-color: #f5e6cc;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  .navbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    background: #4d4d4d; /* Dark background for contrast */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+  }
+  
+  .nav-links li {
+    margin: 0 10px;
+  }
+  
+  .nav-button {
+    background: #f5e6cc;
+    color: #4d4d4d;
+    border: 2px solid #4d4d4d;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .nav-button:hover {
+    background: #4d4d4d;
+    color: #f5e6cc;
+  }
