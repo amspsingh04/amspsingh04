@@ -1,1 +1,48 @@
-/amspsingh04
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/amspsingh04/node_modules
+/amspsingh04/.pnp
+/amspsingh04.pnp.js
+
+# testing
+/amspsingh04/coverage
+
+# production
+/amspsingh04/build
+
+# misc
+/amspsingh04/.DS_Store
+/amspsingh04/.env.local
+/amspsingh04/.env.development.local
+/amspsingh04/.env.test.local
+/amspsingh04/.env.production.local
+
+/amspsingh04/npm-debug.log*
+/amspsingh04/yarn-debug.log*
+/amspsingh04/yarn-error.log*
+
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.env
