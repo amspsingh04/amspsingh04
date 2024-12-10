@@ -6,23 +6,6 @@ import Header from './header/page';
 import Intro from "./intro/page";
 
 const HomePage = () => {
-  const opentab = (tabName) => {
-    const tabs = document.querySelectorAll('.tab-contents');
-    const tabLinks = document.querySelectorAll('.tab-links');
-
-    tabs.forEach((tab) => {
-      tab.classList.remove('active-tab');
-    });
-
-    tabLinks.forEach((link) => {
-      link.classList.remove('active-link');
-    });
-
-    document.getElementById(tabName).classList.add('active-tab');
-    const activeTabLink = Array.from(tabLinks).find((link) => link.textContent === tabName);
-    activeTabLink.classList.add('active-link');
-  };
-
   return (
     <main className={styles.page}>
       <Header />
