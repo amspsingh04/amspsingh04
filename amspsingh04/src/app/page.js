@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Intro from './components/Intro';
-import Header from './components/Header';
+import Header from './header/page';
+import Intro from "./intro/page";
 
 const HomePage = () => {
   return (

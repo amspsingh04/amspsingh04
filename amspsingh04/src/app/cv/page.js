@@ -1,4 +1,4 @@
-import styles from './cv.module.css';
+import styles from './page.module.css';
 
 const CV = () => {
   return (

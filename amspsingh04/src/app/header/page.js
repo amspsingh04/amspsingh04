@@ -1,4 +1,4 @@
-import styles from './header.module.css';
+import styles from './page.module.css';
 import Link from 'next/link';
 
 const Header = () => {
