@@ -1,0 +1,14 @@
+.blog {
+    font-family: Arial, sans-serif;
+    margin-bottom: 2rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .content {
+    margin-top: 1rem;
+    font-size: 1rem;
+  }

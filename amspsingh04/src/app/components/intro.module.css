@@ -1,0 +1,15 @@
+.intro {
+    text-align: center;
+    margin: 2rem;
+  }
+  
+  .title {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: #666;
+  }

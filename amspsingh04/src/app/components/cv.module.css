@@ -1,0 +1,16 @@
+.cv {
+    padding: 1rem;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .content {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
