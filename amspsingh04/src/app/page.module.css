@@ -8,11 +8,8 @@
 
   display: grid;
   grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
+
   min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
   font-family: var(--font-geist-sans);
 }
 
@@ -74,8 +71,7 @@
     border-color 0.2s;
   cursor: pointer;
   display: flex;
-  align-items: center;
-  justify-content: center;
+
   font-size: 16px;
   line-height: 20px;
   font-weight: 500;
@@ -100,7 +96,6 @@ a.secondary {
 
 .footer a {
   display: flex;
-  align-items: center;
   gap: 8px;
 }
 
@@ -132,9 +127,6 @@ a.secondary {
     padding-bottom: 80px;
   }
 
-  .main {
-    align-items: center;
-  }
 
   .main ol {
     text-align: center;
