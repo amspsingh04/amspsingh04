@@ -7,7 +7,7 @@ const Blogs = () => {
         <Header />
       <h1 className={styles.title}>Blogs</h1>
       <p className={styles.content}>
-        Stay tuned for articles and tutorials on web development, design patterns, and more!
+        Stay tuned for articles and tutorials on web development, ML, and more!
       </p>
     </div>
   );

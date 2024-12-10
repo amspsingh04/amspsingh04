@@ -1,1 +1,12 @@
-<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" style="background-color: black;">
+  <!-- Gold Outline Circle -->
+  <circle cx="100" cy="100" r="95" stroke="gold" stroke-width="5" fill="none" />
+  
+  <!-- Stylized SP Letters -->
+  <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="gold" text-anchor="middle" dominant-baseline="middle">
+    SP
+  </text>
+  
+  <!-- Smart Detailing -->
+  <path d="M50,150 Q100,50 150,150" stroke="gold" stroke-width="3" fill="none" />
+</svg>

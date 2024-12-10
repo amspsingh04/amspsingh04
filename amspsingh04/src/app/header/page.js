@@ -4,7 +4,6 @@ import Link from 'next/link';
 const Header = () => {
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>amspsingh04</h1>
       <nav className={styles.nav}>
         <Link href="/" className={styles.navItem}>Home</Link>
         <Link href="/blogs" className={styles.navItem}>Blogs</Link>
