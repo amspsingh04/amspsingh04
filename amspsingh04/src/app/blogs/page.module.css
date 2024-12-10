@@ -1,14 +1,20 @@
 .blog {
-    font-family: Arial, sans-serif;
-    margin-bottom: 2rem;
-  }
-  
-  .title {
-    font-size: 2rem;
-    font-weight: bold;
-  }
-  
-  .content {
-    margin-top: 1rem;
-    font-size: 1rem;
-  }
+  font-family: Arial, sans-serif;
+  margin-bottom: 2rem;
+  color: #FFD700; /* Gold color for text */
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #FFD700; /* Gold color for title */
+}
+
+.content {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #FFD700; /* Gold color for content text */
+  background-color: #000000; /* Black background for content */
+  padding: 10px;
+  border-radius: 8px;
+}

@@ -1,16 +1,21 @@
 .cv {
-    padding: 0;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-  }
-  
-  .title {
-    font-size: 2rem;
-    font-weight: bold;
-  }
-  
-  .content {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  
+  padding: 0;
+  background-color: #000000; /* Black background */
+  border-radius: 8px;
+  color: #FFD700; /* Gold color for text */
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #FFD700; /* Gold color for title */
+}
+
+.content {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #FFD700; /* Gold color for content text */
+  background-color: #000000; /* Black background for content */
+  padding: 10px;
+  border-radius: 8px;
+}

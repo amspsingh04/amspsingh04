@@ -3,7 +3,9 @@
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
 
-  --button-primary-hover: #383838;
+  --gold: #FFD700;
+  --black: #000000;
+  --button-primary-hover: #a68d00; /* Darker gold for hover effect */
   --button-secondary-hover: #f2f2f2;
 
   display: grid;
@@ -11,6 +13,8 @@
 
   min-height: 100svh;
   font-family: var(--font-geist-sans);
+  background-color: var(--black);
+  color: var(--gold);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,7 +23,9 @@
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
     --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
 
-    --button-primary-hover: #ccc;
+    --gold: #FFD700;
+    --black: #000000;
+    --button-primary-hover: #b5a400;
     --button-secondary-hover: #1a1a1a;
   }
 }
@@ -39,6 +45,7 @@
   line-height: 24px;
   letter-spacing: -0.01em;
   list-style-position: inside;
+  color: var(--gold);
 }
 
 .main li:not(:last-of-type) {
@@ -78,8 +85,8 @@
 }
 
 a.primary {
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--gold);
+  color: var(--black);
   gap: 8px;
 }
 
@@ -126,7 +133,6 @@ a.secondary {
     padding: 32px;
     padding-bottom: 80px;
   }
-
 
   .main ol {
     text-align: center;
