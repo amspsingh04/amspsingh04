@@ -9,7 +9,7 @@ const CV = () => {
       <p className={styles.description}>
         Below is a preview of my CV. You can also{' '}
         <a href="/CV.pdf" download className={styles.downloadLink}>
-          download it here
+          download it here (Last Updated: November 2024)
         </a>.
       </p>
       <br></br>
