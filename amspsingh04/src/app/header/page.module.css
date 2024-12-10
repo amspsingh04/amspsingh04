@@ -3,8 +3,8 @@
   justify-content: space-between; /* Space between navigation and icons */
   align-items: center;
   padding: 10px 20px;
-  background-color: #FFD700; /* Gold background */
-  color: black;
+  background-color: black; /* Gold background */
+  color: #FFD700;
 }
 
 .nav {
@@ -13,7 +13,7 @@
 }
 
 .navItem {
-  color: #000000; /* Gold text */
+  color: #FFD700; /* Gold text */
   text-decoration: none;
   font-weight: bold;
 }
