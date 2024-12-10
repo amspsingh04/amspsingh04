@@ -14,7 +14,7 @@ const CV = () => {
         </a>.
       </p>
       <div className={styles.pdfViewer}>
-      <iframe src='./CV.pdf' />
+      <iframe src='/CV.pdf' />
       </div>
     </div>
   );
