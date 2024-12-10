@@ -8,7 +8,7 @@ import Intro from "./intro/page";
 const HomePage = () => {
   return (
     <main className={styles.page}>
-      <Header />
+      <div id="header"><Header /></div>
       <Intro />
       
     </main>

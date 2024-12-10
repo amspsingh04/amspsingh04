@@ -1,24 +1,35 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #000000; /* Black background for content */
-    color: white;
-  }
-  
-  .title {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .nav {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .navItem {
-    color: white;
-    text-decoration: none;
-  }
-  
+  display: flex;
+  justify-content: space-between; /* Space between navigation and icons */
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #FFD700; /* Gold background */
+  color: black;
+}
+
+.nav {
+  display: flex;
+  gap: 16px; /* Adds spacing between navigation items */
+}
+
+.navItem {
+  color: #000000; /* Gold text */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.socialIcons {
+  display: flex;
+  margin-left: auto; /* Push the social icons to the far right */
+  gap: 16px; /* Adds spacing between icons */
+}
+
+.socialIcon img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.socialIcon img:hover {
+  transform: scale(1.2); /* Scale up on hover */
+}

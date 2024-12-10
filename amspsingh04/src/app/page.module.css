@@ -17,6 +17,11 @@
   color: var(--gold);
 }
 
+.header{
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
 @media (prefers-color-scheme: dark) {
   .page {
     --gray-rgb: 255, 255, 255;
