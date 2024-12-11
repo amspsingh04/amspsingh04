@@ -1,7 +1,6 @@
 .cv {
   padding: 0;
   background-color: #000000; /* Black background */
-  border-radius: 8px;
   padding: 20px;
   color: #FFD700; /* Gold color for text */
 }
@@ -19,5 +18,4 @@
   color: #FFD700; /* Gold color for content text */
   background-color: #000000; /* Black background for content */
   padding: 20px;
-  border-radius: 8px;
 }
