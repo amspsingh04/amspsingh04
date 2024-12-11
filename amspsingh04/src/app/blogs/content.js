@@ -1,40 +1,40 @@
-"use client";
-
+// content.js
 export default function ContentPane({ selectedBlog }) {
-  return (
-    <div className="content-pane">
-      {selectedBlog ? (
-        <>
-          <h3>{selectedBlog.title}</h3>
-          <div className="content-box">
-            <pre>{selectedBlog.content}</pre>
-          </div>
-        </>
-      ) : (
-        <p>Select a blog to view content</p>
-      )}
+  if (!selectedBlog) {
+    return (
+      <div className="contentPane">
+        <p>Select a blog to view its content.</p>
+        <style jsx>{`
+          .contentPane {
+            flex: 1;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+          }
+        `}</style>
+      </div>
+    );
+  }
 
+  return (
+    <div className="contentPane">
+      <h1>{selectedBlog.title}</h1>
+      <p><strong>Date:</strong> {selectedBlog.date}</p>
+      <p><strong>Author:</strong> {selectedBlog.author}</p>
+      <div className="blogContent">{selectedBlog.content}</div>
       <style jsx>{`
-        .content-pane {
+        .contentPane {
+          flex: 1;
+          background: #1a1a1a;
+          color: #fff;
           padding: 20px;
-          flex: 1; 
-          overflow-y: auto;
-          color: #ffffff;
-          background: #000000;
         }
-        .content-box {
-          white-space: pre-wrap; /* Preserves line breaks */
-          font-family: 'Courier New', monospace;
-          font-size: 14px;
-          color: #ffffff;
+        h1 {
+          color: gold;
         }
-        pre {
-          font-size: 14px;
-          color: #ffffff;
-          padding: 10px;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          overflow: auto;
+        .blogContent {
+          margin-top: 20px;
+          white-space: pre-wrap;
         }
       `}</style>
     </div>

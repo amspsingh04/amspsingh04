@@ -1,0 +1,35 @@
+.blogContainer {
+    margin: 20px;
+    padding: 20px;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 8px;
+  }
+  
+  .blogHeader {
+    margin-bottom: 20px;
+  }
+  
+  .blogTitle {
+    color: gold;
+    font-size: 24px;
+  }
+  
+  .blogMeta {
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+  .blogContent {
+    line-height: 1.6;
+  }
+  
+  .codeBlock {
+    background: #2c2c2c;
+    color: #f8f8f8;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: monospace;
+  }
+  

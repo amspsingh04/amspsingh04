@@ -12,7 +12,7 @@ const CV = () => {
       <br></br>
       <div className={styles.pdfViewer}>
         <iframe 
-          src='/CV.pdf' 
+          src='/ShouryaPratapSingh_CV_research.pdf' 
           width="100%" 
           height="1000px" 
           title="CV" 
