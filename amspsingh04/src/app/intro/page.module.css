@@ -1,15 +1,75 @@
 .intro {
-    text-align: center;
-    margin: 2rem;
-  }
-  
-  .title {
-    font-size: 3rem;
-    font-weight: bold;
-  }
-  
-  .description {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    color: #666;
-  }
+  text-align: center;
+  margin: 2rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #666;
+}
+
+/* page.module.css */
+.introContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #1a1a1a; /* Dark background */
+  color: #fff; /* Default text color */
+  padding: 20px;
+}
+
+.centerTextSection {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 2rem;
+  color: gold;
+}
+
+.mainTitle {
+  font-size: 2.5rem;
+  color: #f5f5f5;
+}
+
+.columnsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.leftColumn,
+.rightColumn {
+  flex: 1;
+  max-width: 45%;
+  text-align: left;
+}
+
+.leftColumn {
+  color: #e0e0e0;
+  padding-left: 0%;
+  max-width: min-content;
+}
+
+.rightColumn {
+  color: #e0e0e0;
+}
+
+.projectList {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 10px;
+}
