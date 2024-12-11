@@ -5,7 +5,7 @@ const CV = () => {
     <div className={styles.cv}>
       <p className={styles.description}>
         Below is a preview of my CV. You can also{' '}
-        <a href="/CV.pdf" download className={styles.downloadLink}>
+        <a href="/ShouryaPratapSingh_CV_research.pdf" download className={styles.downloadLink}>
           download it here (Last Updated: November 2024)
         </a>.
       </p>
