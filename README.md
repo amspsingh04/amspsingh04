@@ -9,7 +9,7 @@
 - 📫 Reach out to me  @ [LinkedIn](https://www.linkedin.com/in/amspsingh04)
 
 
-- Follow my journey at [my homepage](https://www.amspsingh04.vercel.app) (currently only good for desktops)
+- Follow my journey at [my homepage](https://amspsingh04.vercel.app) (currently only good for desktops)
 
 
 
