@@ -7,7 +7,7 @@ const blog3 = {
     <iframe 
               src='/Review_Biomedical_Image_Segmentation.pdf' 
               width="100%" 
-              height="170%" 
+              height="250px" 
               title="CV" 
             />
 };
