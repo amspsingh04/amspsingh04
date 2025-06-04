@@ -1,6 +1,6 @@
 const blog3 = {
   id: 3,
-  title: "My Research Paper",
+  title: "Biomedical Image Segmentation",
   date: "2025-06-04",
   author: "Shourya Pratap Singh",
   content: `

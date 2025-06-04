@@ -1,4 +1,4 @@
-const blog1 = {
+const blog2 = {
   id: 2,
   title: "AMKR - Assistive Mechanism of Knowledge Representation",
   date: "2024-01-30",
@@ -19,4 +19,4 @@ Face Recognition:
 We implemented face recognition using TensorFlow Lite for Raspberry Pi. The PiCam V3 captures images on command, processes them, and sends them to a cloud-hosted model for face recognition. As we did with a previous project (hostelHub), we checked for facial features and implemented matching logic to determine if the face matches a familiar person. If it does, the recognized individual's identity is conveyed to the user via TTS in the Bluetooth headset. If not, it indicates that the person is unknown.`
 };
 
-export default blog1;
+export default blog2;
