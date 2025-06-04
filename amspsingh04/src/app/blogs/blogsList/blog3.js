@@ -4,14 +4,12 @@ const blog3 = {
   date: "2025-06-04",
   author: "Shourya Pratap Singh",
   content: 
-    <div className={styles.pdfViewer}>
-            <iframe 
-              src='/ShouryaPratapSingh_CV_research.pdf' 
+    <iframe 
+              src='/Review_Biomedical_Image_Segmentation.pdf' 
               width="100%" 
               height="1000px" 
               title="CV" 
             />
-    </div>
 };
 
 export default blog3;
