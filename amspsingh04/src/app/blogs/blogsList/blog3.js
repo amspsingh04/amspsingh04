@@ -5,7 +5,7 @@ const blog3 = {
   author: "Shourya Pratap Singh",
   content: `
     <iframe 
-      src="../../../../public/Review_Biomedical_Image_Segmentation.pdf" 
+      src="../public/Review_Biomedical_Image_Segmentation.pdf" 
       width="100%" 
       height="600px" 
       style="border: none;">
