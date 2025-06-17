@@ -4,7 +4,7 @@ import blogs from './blogsData';
 export default function BlogsLanding() {
   return (
     <div style={{ padding: '2rem', background: '#111', minHeight: '100vh', color: 'white' }}>
-      <h1 style={{ textAlign: 'center' }}>📚 My Blogs</h1>
+      <h1 style={{ textAlign: 'center' }}> My Blogs</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', justifyContent: 'center' }}>
         {blogs.map((blog) => (
           <Link key={blog.id} href={`/blogs/${blog.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
