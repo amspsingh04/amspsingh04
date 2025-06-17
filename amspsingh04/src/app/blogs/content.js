@@ -1,5 +1,9 @@
 import blogs from './blogsData';
 
+export async function generateStaticParams() {
+  return blogs.map((blog) => ({ slug: blog.slug }));
+}
+
 export default function BlogDetail({ params }) {
   const blog = blogs.find((b) => b.slug === params.slug);
 
