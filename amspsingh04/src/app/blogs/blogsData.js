@@ -44,33 +44,24 @@ Similarly, when the corresponding command is used, the PiCam V3 captures an imag
 Face Recognition:
 We implemented face recognition using TensorFlow Lite for Raspberry Pi. The PiCam V3 captures images on command, processes them, and sends them to a cloud-hosted model for face recognition. As we did with a previous project (hostelHub), we checked for facial features and implemented matching logic to determine if the face matches a familiar person. If it does, the recognized individual's identity is conveyed to the user via TTS in the Bluetooth headset. If not, it indicates that the person is unknown.`
 },
-{
-  id: 3,
-  slug:"BIS-review",
-  title: "Biomedical Image Segmentation",
-  date: "2025-06-04",
-  author: "Shourya Pratap Singh",
-  content: 
-    <iframe 
-              src='/Review_Biomedical_Image_Segmentation.pdf' 
-              width="100%" 
-              height="400px" 
-              title="CV" 
-            />
-},
-{
+  {
+    id: 3,
+    slug: "BIS-review",
+    title: "Biomedical Image Segmentation",
+    date: "2025-06-04",
+    author: "Shourya Pratap Singh",
+    isPDF: true,
+    pdfSrc: "/Review_Biomedical_Image_Segmentation.pdf"
+  },
+  {
     id: 4,
     slug: "HIS-expts",
     title: "Histopathological Image Segmentation on Breast Cancer Whole Slide Images - Different Approaches",
     date: "2025-06-17",
     author: "Shourya Pratap Singh",
-    content:<iframe 
-              src='/HIS_Expt.pdf' 
-              width="100%" 
-              height="400px" 
-              title="CV" 
-            />
-}
+    isPDF: true,
+    pdfSrc: "/HIS_Expt.pdf"
+  }
 ];
 
 
