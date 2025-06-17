@@ -1,6 +1,6 @@
 // app/blogs/page.js
 import Link from 'next/link';
-import blogs from './blogsData';
+import blogs from '../Components/blogsData';
 
 export default function BlogsLanding() {
   return (

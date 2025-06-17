@@ -1,6 +1,6 @@
 // pages/blogs/[slug].js
 import { useRouter } from 'next/router';
-import blogs from './blogsData';
+import blogs from '../Components/blogsData';
 
 export default function BlogDetail() {
   const router = useRouter();
