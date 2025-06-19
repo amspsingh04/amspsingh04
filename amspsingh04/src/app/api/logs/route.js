@@ -1,4 +1,4 @@
-import { logs } from '@/app/logger/data';
+import { logs } from '../../../app/logger/data';
 
 let nextId = logs.length + 1;
 

@@ -1,3 +1,4 @@
+/* app/logger/page.module.css */
 .container {
   padding: 2rem;
   min-height: 100vh;
@@ -10,38 +11,6 @@
   font-size: 2rem;
   margin-bottom: 1.5rem;
   color: gold;
-}
-
-.form {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.form input[type="date"],
-.form input[type="text"] {
-  padding: 0.5rem;
-  border-radius: 4px;
-  border: none;
-  width: 150px;
-}
-
-.form label {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  color: #e0e0e0;
-}
-
-.form button {
-  padding: 0.6rem 1rem;
-  background-color: gold;
-  color: #111;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 .table {
