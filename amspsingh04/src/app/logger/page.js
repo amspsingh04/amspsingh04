@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import styles from './logger.module.css';
 
 export default function LoggerPage() {
   const [entries, setEntries] = useState([]);
@@ -7,7 +8,7 @@ export default function LoggerPage() {
 
   useEffect(() => {
     fetch('/api/logs')
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(setEntries);
   }, []);
 
@@ -19,48 +20,72 @@ export default function LoggerPage() {
       body: JSON.stringify(form),
     });
     const data = await res.json();
-    setEntries(prev => [...prev, data]);
+    setEntries((prev) => [...prev, data]);
     setForm({ date: '', activity: '', tag: '', done: false });
   };
 
   const toggleDone = (id) => {
-    setEntries(prev => prev.map(e => e.id === id ? { ...e, done: !e.done } : e));
-    // (No backend persistence needed)
+    setEntries((prev) => prev.map((e) => (e.id === id ? { ...e, done: !e.done } : e)));
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>📋 Activity Logger</h1>
+    <div className={styles.container}>
+      <h1 className={styles.title}>📋 Activity Logger</h1>
 
-      <form onSubmit={addEntry} style={{ marginBottom: '1rem' }}>
-        <input type="date" required value={form.date}
-          onChange={e => setForm({ ...form, date: e.target.value })} />
-        <input type="text" placeholder="Activity" required value={form.activity}
-          onChange={e => setForm({ ...form, activity: e.target.value })} />
-        <input type="text" placeholder="Tag" value={form.tag}
-          onChange={e => setForm({ ...form, tag: e.target.value })} />
+      <form onSubmit={addEntry} className={styles.form}>
+        <input
+          type="date"
+          required
+          value={form.date}
+          onChange={(e) => setForm({ ...form, date: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Activity"
+          required
+          value={form.activity}
+          onChange={(e) => setForm({ ...form, activity: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Tag"
+          value={form.tag}
+          onChange={(e) => setForm({ ...form, tag: e.target.value })}
+        />
         <label>
-          Done? <input type="checkbox" checked={form.done}
-            onChange={e => setForm({ ...form, done: e.target.checked })} />
+          Done?
+          <input
+            className={styles.checkbox}
+            type="checkbox"
+            checked={form.done}
+            onChange={(e) => setForm({ ...form, done: e.target.checked })}
+          />
         </label>
         <button type="submit">Add</button>
       </form>
 
-      <table border="1" cellPadding="8" style={{ width: '100%', textAlign: 'left' }}>
+      <table className={styles.table}>
         <thead>
           <tr>
-            <th>Date</th><th>Activity</th><th>Tag</th><th>Done</th>
+            <th>Date</th>
+            <th>Activity</th>
+            <th>Tag</th>
+            <th>Done</th>
           </tr>
         </thead>
         <tbody>
-          {entries.map(e => (
+          {entries.map((e) => (
             <tr key={e.id}>
               <td>{e.date}</td>
               <td>{e.activity}</td>
               <td>{e.tag}</td>
               <td>
-                <input type="checkbox" checked={e.done}
-                  onChange={() => toggleDone(e.id)} />
+                <input
+                  className={styles.checkbox}
+                  type="checkbox"
+                  checked={e.done}
+                  onChange={() => toggleDone(e.id)}
+                />
               </td>
             </tr>
           ))}
