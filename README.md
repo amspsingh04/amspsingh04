@@ -9,6 +9,10 @@
 - 📫 Reach out to me  @ [LinkedIn](https://www.linkedin.com/in/amspsingh04)
 
 
+- Follow my journey at [my homepage](https://amspsingh04.vercel.app) (currently only good for desktops)
+
+
+
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=amspsingh04&theme=tokyonight" alt="mystreak"/>
 
 [![Shourya's GitHub stats](https://github-readme-stats.vercel.app/api?username=amspsingh04)](https://github.com/anuraghazra/github-readme-stats)

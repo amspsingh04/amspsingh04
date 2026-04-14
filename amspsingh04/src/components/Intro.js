@@ -12,7 +12,7 @@ export default function Intro() {
       </div>
 
       <div className={styles.centerTextSection}>
-        <h2 className={styles.subtitle}>CS Junior at VITC</h2>
+        <h3 className={styles.subtitle}>CS Senior at VITC</h3>
         <h1 className={styles.mainTitle}>Hi, I am Shourya Pratap Singh</h1>
         <h2 className={styles.subtitle}>From India</h2>
       </div>
@@ -20,7 +20,7 @@ export default function Intro() {
       <div className={styles.columnsContainer}>
         <div className={styles.leftColumn}>
           <p>
-            I am a third-year student at VIT Chennai, studying Computer Science
+            I am a fourth-year student at VIT Chennai, studying Computer Science
             with Specialization in Cyber Physical Systems. I am interested in
             technologies such as Cloud Computing, AI/ML, Data Science, Computer
             Vision, and Digital Twins — technologies that can be used as
@@ -28,12 +28,12 @@ export default function Intro() {
           </p>
         </div>
         <div className={styles.rightColumn}>
-          <p>I have previously worked on projects like:</p>
+          <p>My research interests include:</p>
           <ul className={styles.projectList}>
-            <li>AMKR</li>
-            <li>TransHRNet++</li>
-            <li>ASR--</li>
-            <li>Nyaya-Sahaya</li>
+            <li>Image Processing and Computer Vision techniques (wrt Biomedical Applications)</li>
+            <li>Wearable AI Devices</li>
+            <li>Speech Recognition and Language Learning</li>
+
           </ul>
           <p>
             I would like to expand my knowledge and explore new areas for
