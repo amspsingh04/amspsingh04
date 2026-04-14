@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: black;
+  color: #ffd700;
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+}
+
+.navItem {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.socialIcons {
+  display: flex;
+  margin-left: auto;
+  gap: 16px;
+}
+
+.socialIcon img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.socialIcon img:hover {
+  transform: scale(1.2);
+}

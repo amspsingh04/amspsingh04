@@ -1,17 +1,10 @@
-"use client";
-
-import Image from "next/image";
 import styles from "./page.module.css";
-import Header from './header/page';
-import Intro from "./intro/page";
+import Intro from "@/components/Intro";
 
-const HomePage = () => {
+export default function HomePage() {
   return (
     <main className={styles.page}>
       <Intro />
-      
     </main>
   );
-};
-
-export default HomePage;
+}
