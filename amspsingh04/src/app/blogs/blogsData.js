@@ -4,6 +4,7 @@ const blogs = [{
   title: "Moral Policing is the Key",
   date: "2020-05-19",
   author: "Shourya",
+  summary: "Reflections on respect, safety, and what young people owe society after high-profile incidents and moral panic.",
   content: `The Instagram group that was busted recently had chats that plucked a string which has so often been plucked by news coming out of New Delhi, 
   and which plays to the tune of fear and insecurity. It is not normal and is not humane. 
   The rot is in the house.  
@@ -29,6 +30,7 @@ const blogs = [{
   title: "AMKR - Assistive Mechanism of Knowledge Representation",
   date: "2024-01-30",
   author: "Shourya, Amritansh",
+  summary: "Affordable smart glasses for OCR, scene description, and face recognition using a Raspberry Pi Zero and cloud APIs.",
   content: `AMKR are a pair of eyeglasses that can be used by those who experience vision issues, to be able to read text, recognize familiar faces, and perceive the world around them.
 
 We use Raspberry Pi Zero and PiCam V3 as the basis of our product. The main aim for choosing this hardware stack was to keep the costs down to a minimum, at approximately $50. However, the greatest limitations that arose with this were the restricted RAM capacity at 512MB and the presence of a single-core CPU clocked at 1GHz. To overcome this, we had to use the power of the cloud as effectively as possible and create pipelines that would interface the RPi Zero module with the cloud-based models.
@@ -50,6 +52,7 @@ We implemented face recognition using TensorFlow Lite for Raspberry Pi. The PiCa
     title: "Biomedical Image Segmentation",
     date: "2025-06-04",
     author: "Shourya Pratap Singh",
+    summary: "Literature review covering segmentation methods and their role in biomedical imaging workflows.",
     isPDF: true,
     pdfSrc: "/Review_Biomedical_Image_Segmentation.pdf"
   },
@@ -59,6 +62,7 @@ We implemented face recognition using TensorFlow Lite for Raspberry Pi. The PiCa
     title: "Histopathological Image Segmentation on Breast Cancer Whole Slide Images - Different Approaches",
     date: "2025-06-17",
     author: "Shourya Pratap Singh",
+    summary: "Experimental comparison of approaches for segmenting structures in breast cancer whole-slide images.",
     isPDF: true,
     pdfSrc: "/HIS_Expt.pdf"
   }
