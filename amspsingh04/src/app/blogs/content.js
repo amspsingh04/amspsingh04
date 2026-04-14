@@ -1,4 +1,3 @@
-// content.js
 export default function ContentPane({ selectedBlog }) {
   if (!selectedBlog) {
     return (

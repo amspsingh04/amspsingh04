@@ -1,5 +1,3 @@
-// blog2.js
-
 const blogs = [
     {
         id: 1,
