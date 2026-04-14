@@ -1,9 +1,8 @@
-import styles from './page.module.css';
+import styles from "./Intro.module.css";
 
-const Intro = () => {
+export default function Intro() {
   return (
     <div className={styles.introContainer}>
-      {/* Rounded Image Section */}
       <div className={styles.imageWrapper}>
         <img
           src="https://avatars.githubusercontent.com/u/93045361?v=4"
@@ -12,7 +11,6 @@ const Intro = () => {
         />
       </div>
 
-      {/* Main Text Section */}
       <div className={styles.centerTextSection}>
         <h2 className={styles.subtitle}>CS Junior at VITC</h2>
         <h1 className={styles.mainTitle}>Hi, I am Shourya Pratap Singh</h1>
@@ -22,13 +20,15 @@ const Intro = () => {
       <div className={styles.columnsContainer}>
         <div className={styles.leftColumn}>
           <p>
-            I am a third-year student at VIT Chennai, studying Computer Science with Specialization in Cyber Physical Systems. I am interested in technologies such as Cloud Computing, AI/ML, Data Science, Computer Vision, and Digital Twins — technologies that can be used as comprehensive solutions for real-world problems.
+            I am a third-year student at VIT Chennai, studying Computer Science
+            with Specialization in Cyber Physical Systems. I am interested in
+            technologies such as Cloud Computing, AI/ML, Data Science, Computer
+            Vision, and Digital Twins — technologies that can be used as
+            comprehensive solutions for real-world problems.
           </p>
         </div>
         <div className={styles.rightColumn}>
-          <p>
-            I have previously worked on projects like:
-          </p>
+          <p>I have previously worked on projects like:</p>
           <ul className={styles.projectList}>
             <li>AMKR</li>
             <li>TransHRNet++</li>
@@ -36,12 +36,11 @@ const Intro = () => {
             <li>Nyaya-Sahaya</li>
           </ul>
           <p>
-            I would like to expand my knowledge and explore new areas for research and better solutions.
+            I would like to expand my knowledge and explore new areas for
+            research and better solutions.
           </p>
         </div>
       </div>
     </div>
   );
-};
-
-export default Intro;
+}

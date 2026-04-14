@@ -1,15 +1,10 @@
-"use client";
-
 import styles from "./page.module.css";
-import Intro from "./intro/page";
+import Intro from "@/components/Intro";
 
-const HomePage = () => {
+export default function HomePage() {
   return (
     <main className={styles.page}>
       <Intro />
-      
     </main>
   );
-};
-
-export default HomePage;
+}

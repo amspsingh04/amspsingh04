@@ -1,0 +1,25 @@
+.footer {
+  background-color: #ffd700;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.icon img {
+  width: 25px;
+  height: 25px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon img:hover {
+  transform: scale(1.2);
+}
