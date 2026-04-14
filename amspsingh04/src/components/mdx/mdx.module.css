@@ -1,0 +1,156 @@
+.callout {
+  margin: 1.5rem 0;
+  padding: 1rem 1.15rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(30, 30, 30, 0.95);
+}
+
+.callout_note {
+  border-left: 4px solid #d4af37;
+}
+
+.callout_warning {
+  border-left: 4px solid #e8a849;
+}
+
+.callout_tip {
+  border-left: 4px solid #6b9fff;
+}
+
+.calloutTitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #c9c9c9;
+  margin-bottom: 0.5rem;
+}
+
+.calloutBody {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #e4e4e4;
+}
+
+.calloutBody p {
+  margin: 0.5rem 0;
+}
+
+.calloutBody p:first-child {
+  margin-top: 0;
+}
+
+.calloutBody p:last-child {
+  margin-bottom: 0;
+}
+
+.outputWrap {
+  margin: 1.5rem 0;
+}
+
+.outputLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8b8b8b;
+  margin-bottom: 0.35rem;
+}
+
+.output {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  border-radius: 8px;
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #c8e6c9;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.figure {
+  margin: 2rem 0;
+}
+
+.figureCanvas {
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #121212;
+  min-height: 220px;
+  display: flex;
+  align-items: stretch;
+}
+
+.figurePlaceholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+.figurePlaceholderText {
+  max-width: 28rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #8a8a8a;
+}
+
+.figureCaption {
+  margin-top: 0.65rem;
+  font-size: 0.8125rem;
+  color: #9a9a9a;
+  line-height: 1.45;
+}
+
+.tableFigure {
+  margin: 1.75rem 0;
+}
+
+.tableScroll {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tableScroll table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.tableScroll th,
+.tableScroll td {
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tableScroll th {
+  background: rgba(212, 175, 55, 0.12);
+  color: #f0e6c8;
+  font-weight: 600;
+}
+
+.tableScroll tr:last-child td {
+  border-bottom: none;
+}
+
+.tableCaption {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  color: #9a9a9a;
+}
