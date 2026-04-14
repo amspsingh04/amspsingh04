@@ -1,0 +1,211 @@
+.page {
+  min-height: 100vh;
+  padding: clamp(1.5rem, 4vw, 2.75rem) clamp(1rem, 4vw, 2rem) 3.5rem;
+  background: #141414;
+  color: #f0f0f0;
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fafafa;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #9a9a9a;
+  max-width: 36rem;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.yearBlock {
+  display: grid;
+  grid-template-columns: minmax(4.5rem, 5.5rem) minmax(0, 1fr);
+  gap: 0 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .yearBlock {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+.yearRail {
+  position: relative;
+  text-align: right;
+  padding-right: 1.25rem;
+  border-right: 2px solid rgba(212, 175, 55, 0.45);
+  min-height: 3rem;
+}
+
+@media (max-width: 640px) {
+  .yearRail {
+    text-align: left;
+    padding-right: 0;
+    padding-bottom: 0.75rem;
+    border-right: none;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.45);
+    min-height: unset;
+  }
+}
+
+.yearRail::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: 0.35rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #d4af37;
+  box-shadow: 0 0 0 4px #141414;
+}
+
+@media (max-width: 640px) {
+  .yearRail::after {
+    right: auto;
+    left: 0;
+    top: auto;
+    bottom: -9px;
+  }
+}
+
+.yearLabel {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #d4af37;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.tileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.cardLink {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+  min-height: 100%;
+}
+
+.cardLink:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.35rem;
+  background: linear-gradient(165deg, #1f1f1f 0%, #1a1a1a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardLink:hover .card {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.cardMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.date {
+  font-size: 0.8125rem;
+  color: #a8a8a8;
+  font-variant-numeric: tabular-nums;
+}
+
+.badge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(212, 175, 55, 0.15);
+  color: #e8c547;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.badgePdf {
+  background: rgba(100, 149, 237, 0.12);
+  color: #9eb7f0;
+  border-color: rgba(100, 149, 237, 0.28);
+}
+
+.cardTitle {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #fff;
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.01em;
+}
+
+.cardSummary {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #b5b5b5;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.cardFooter {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.8125rem;
+  color: #888;
+}
+
+.authorLabel {
+  color: #6e6e6e;
+  margin-right: 0.35rem;
+}
+
+.cta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #d4af37;
+  margin-top: 0.35rem;
+}
+
+.cardLink:hover .cta {
+  text-decoration: underline;
+}
