@@ -1,32 +1,87 @@
-import blogs from '../blogsData';
+import Link from "next/link";
+import blogs from "../blogsData";
+import { compileBlogMdx } from "@/lib/compileBlogMdx";
+import styles from "./article.module.css";
 
 export async function generateStaticParams() {
   return blogs.map((blog) => ({ slug: blog.slug }));
 }
 
-export default function BlogDetail({ params }) {
-  const blog = blogs.find((b) => b.slug === params.slug);
+function formatDisplayDate(isoDate) {
+  const d = new Date(`${isoDate}T12:00:00`);
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+export default async function BlogDetail({ params }) {
+  const { slug } = await params;
+  const blog = blogs.find((b) => b.slug === slug);
 
   if (!blog) {
-    return <div style={{ padding: '2rem', color: 'white' }}>404 - Blog not found</div>;
+    return (
+      <div className={styles.shell}>
+        <div className={styles.inner}>404 — Blog not found</div>
+      </div>
+    );
+  }
+
+  let mdxContent = null;
+  if (blog.mdxPath) {
+    try {
+      const { content } = await compileBlogMdx(blog.mdxPath);
+      mdxContent = content;
+    } catch {
+      mdxContent = null;
+    }
   }
 
   return (
-    <div style={{ padding: '2rem', background: '#111', minHeight: '100vh', color: 'white' }}>
-      <h1 style={{ color: 'gold' }}>{blog.title}</h1>
-      <p><strong>Date:</strong> {blog.date}</p>
-      <p><strong>Author:</strong> {blog.author}</p>
-      <div style={{ marginTop: '1.5rem' }}>
-        {blog.isPDF ? (
+    <div className={styles.shell}>
+      <div className={styles.inner}>
+        <Link href="/blogs" className={styles.back}>
+          ← All posts
+        </Link>
+
+        <div className={styles.meta}>
+          <time className={styles.date} dateTime={blog.date}>
+            {formatDisplayDate(blog.date)}
+          </time>
+          <div className={styles.badges}>
+            {blog.category === "football" ? (
+              <span className={`${styles.badge} ${styles.badgeFootball}`}>
+                Football
+              </span>
+            ) : null}
+            {blog.isPDF ? (
+              <span className={`${styles.badge} ${styles.badgePdf}`}>PDF</span>
+            ) : (
+              <span className={styles.badge}>
+                {blog.category === "football" ? "Analytics" : "Article"}
+              </span>
+            )}
+          </div>
+        </div>
+
+        <h1 className={styles.title}>{blog.title}</h1>
+        <p className={styles.author}>By {blog.author}</p>
+
+        {mdxContent ? (
+          <div className={styles.body}>{mdxContent}</div>
+        ) : blog.mdxPath ? (
+          <p>Could not load this post. Check that the MDX file exists.</p>
+        ) : blog.isPDF ? (
           <iframe
+            className={styles.pdfFrame}
             src={blog.pdfSrc}
             title={blog.title}
-            width="100%"
-            height="600px"
-            style={{ border: '1px solid #444', borderRadius: '6px' }}
           />
         ) : (
-          <p style={{ whiteSpace: 'pre-wrap' }}>{blog.content}</p>
+          <div className={`${styles.body} ${styles.plainBody}`}>
+            <p>{blog.content}</p>
+          </div>
         )}
       </div>
     </div>
