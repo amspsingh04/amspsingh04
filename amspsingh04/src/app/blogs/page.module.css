@@ -31,34 +31,15 @@
   line-height: 1.5;
 }
 
-.section {
-  margin-top: 2.75rem;
+.inlineLink {
+  color: #d4af37;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.sectionTitle {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #f2f2f2;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.4rem;
-}
-
-.sectionSubtitle {
-  font-size: 0.9rem;
-  color: #8e8e8e;
-  line-height: 1.55;
-  max-width: 40rem;
-  margin-bottom: 1.75rem;
-}
-
-.inlineCode {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    monospace;
-  font-size: 0.82em;
-  padding: 0.1rem 0.35rem;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #e0c97a;
+.inlineLink:hover {
+  color: #f0d76e;
 }
 
 .timeline {
@@ -197,12 +178,6 @@
   background: rgba(100, 149, 237, 0.12);
   color: #9eb7f0;
   border-color: rgba(100, 149, 237, 0.28);
-}
-
-.badgeFootball {
-  background: rgba(46, 160, 67, 0.15);
-  color: #7dcea0;
-  border-color: rgba(46, 160, 67, 0.35);
 }
 
 .cardTitle {

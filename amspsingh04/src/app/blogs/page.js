@@ -23,86 +23,15 @@ function groupByYear(sortedBlogs) {
 
 function ctaLabel(blog) {
   if (blog.isPDF) return "Open document →";
-  if (blog.mdxPath) return "Read analysis →";
+  if (blog.mdxPath) return "Read post →";
   return "Read post →";
 }
 
-function YearTimeline({ byYear }) {
-  return (
-    <div className={styles.timeline}>
-      {byYear.map(([year, yearBlogs]) => (
-        <section
-          key={year}
-          className={styles.yearBlock}
-          aria-labelledby={`year-${year}`}
-        >
-          <div className={styles.yearRail}>
-            <h2 id={`year-${year}`} className={styles.yearLabel}>
-              {year}
-            </h2>
-          </div>
-          <div className={styles.tileGrid}>
-            {yearBlogs.map((blog) => (
-              <Link
-                key={blog.id}
-                href={`/blogs/${blog.slug}`}
-                className={styles.cardLink}
-              >
-                <article className={styles.card}>
-                  <div className={styles.cardMeta}>
-                    <time className={styles.date} dateTime={blog.date}>
-                      {formatDisplayDate(blog.date)}
-                    </time>
-                    {blog.category === "football" ? (
-                      <span
-                        className={`${styles.badge} ${styles.badgeFootball}`}
-                      >
-                        Football
-                      </span>
-                    ) : null}
-                    {blog.isPDF ? (
-                      <span className={`${styles.badge} ${styles.badgePdf}`}>
-                        PDF
-                      </span>
-                    ) : (
-                      <span className={styles.badge}>
-                        {blog.category === "football"
-                          ? "Analytics"
-                          : "Article"}
-                      </span>
-                    )}
-                  </div>
-                  <h3 className={styles.cardTitle}>{blog.title}</h3>
-                  {blog.summary ? (
-                    <p className={styles.cardSummary}>{blog.summary}</p>
-                  ) : null}
-                  <div className={styles.cardFooter}>
-                    <span className={styles.authorLabel}>By</span>
-                    {blog.author}
-                    <div className={styles.cta}>{ctaLabel(blog)}</div>
-                  </div>
-                </article>
-              </Link>
-            ))}
-          </div>
-        </section>
-      ))}
-    </div>
-  );
-}
-
 export default function BlogsLanding() {
-  const football = blogs.filter((b) => b.category === "football");
-  const writing = blogs.filter(
-    (b) => !b.category || b.category === "writing"
+  const sorted = [...blogs].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
   );
-
-  const footballByYear = groupByYear(
-    [...football].sort((a, b) => new Date(b.date) - new Date(a.date))
-  );
-  const writingByYear = groupByYear(
-    [...writing].sort((a, b) => new Date(b.date) - new Date(a.date))
-  );
+  const byYear = groupByYear(sorted);
 
   return (
     <div className={styles.page}>
@@ -110,43 +39,62 @@ export default function BlogsLanding() {
         <header className={styles.header}>
           <h1 className={styles.title}>Writing &amp; notes</h1>
           <p className={styles.subtitle}>
-            Essays, PDFs, and football analytics—newest first within each
-            section.
+            Essays and PDFs, newest first. Football analytics lives on{" "}
+            <Link href="/football" className={styles.inlineLink}>
+              /football
+            </Link>
+            .
           </p>
         </header>
 
-        {football.length > 0 ? (
-          <section
-            className={styles.section}
-            aria-labelledby="football-heading"
-          >
-            <h2 id="football-heading" className={styles.sectionTitle}>
-              Football analytics
-            </h2>
-            <p className={styles.sectionSubtitle}>
-              Data-driven match notes: code snippets, outputs, charts, and
-              tables via MDX (
-              <code className={styles.inlineCode}>src/content/blogs/football/</code>
-              ).
-            </p>
-            <YearTimeline byYear={footballByYear} />
-          </section>
-        ) : null}
-
-        {writing.length > 0 ? (
-          <section
-            className={styles.section}
-            aria-labelledby="writing-heading"
-          >
-            <h2 id="writing-heading" className={styles.sectionTitle}>
-              Writing &amp; PDFs
-            </h2>
-            <p className={styles.sectionSubtitle}>
-              Long-form posts and embedded documents.
-            </p>
-            <YearTimeline byYear={writingByYear} />
-          </section>
-        ) : null}
+        <div className={styles.timeline}>
+          {byYear.map(([year, yearBlogs]) => (
+            <section
+              key={year}
+              className={styles.yearBlock}
+              aria-labelledby={`year-${year}`}
+            >
+              <div className={styles.yearRail}>
+                <h2 id={`year-${year}`} className={styles.yearLabel}>
+                  {year}
+                </h2>
+              </div>
+              <div className={styles.tileGrid}>
+                {yearBlogs.map((blog) => (
+                  <Link
+                    key={blog.id}
+                    href={`/blogs/${blog.slug}`}
+                    className={styles.cardLink}
+                  >
+                    <article className={styles.card}>
+                      <div className={styles.cardMeta}>
+                        <time className={styles.date} dateTime={blog.date}>
+                          {formatDisplayDate(blog.date)}
+                        </time>
+                        {blog.isPDF ? (
+                          <span className={`${styles.badge} ${styles.badgePdf}`}>
+                            PDF
+                          </span>
+                        ) : (
+                          <span className={styles.badge}>Article</span>
+                        )}
+                      </div>
+                      <h3 className={styles.cardTitle}>{blog.title}</h3>
+                      {blog.summary ? (
+                        <p className={styles.cardSummary}>{blog.summary}</p>
+                      ) : null}
+                      <div className={styles.cardFooter}>
+                        <span className={styles.authorLabel}>By</span>
+                        {blog.author}
+                        <div className={styles.cta}>{ctaLabel(blog)}</div>
+                      </div>
+                    </article>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
       </div>
     </div>
   );

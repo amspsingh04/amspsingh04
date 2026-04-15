@@ -13,6 +13,9 @@ export default function Header() {
         <Link href="/blogs" className={styles.navItem}>
           Blogs
         </Link>
+        <Link href="/football" className={styles.navItem}>
+          Football
+        </Link>
         <Link href="/cv" className={styles.navItem}>
           CV
         </Link>

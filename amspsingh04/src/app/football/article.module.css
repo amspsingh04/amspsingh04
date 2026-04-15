@@ -1,0 +1,163 @@
+.shell {
+  min-height: 100vh;
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem) 3rem;
+  background: radial-gradient(ellipse 120% 80% at 50% -20%, rgba(46, 160, 67, 0.12), transparent),
+    #0a1210;
+  color: #e8f0ec;
+}
+
+.inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.date {
+  font-size: 0.875rem;
+  color: #8aa89a;
+  font-variant-numeric: tabular-nums;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(86, 211, 100, 0.12);
+  color: #7dcea0;
+  border: 1px solid rgba(86, 211, 100, 0.28);
+}
+
+.badgeMuted {
+  background: rgba(255, 255, 255, 0.06);
+  color: #9ab0a4;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #f4fbf7;
+  margin-bottom: 0.5rem;
+}
+
+.author {
+  font-size: 0.9rem;
+  color: #7a9488;
+  margin-bottom: 2rem;
+}
+
+.body {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: #c5d4cc;
+}
+
+.body h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #eef6f1;
+  margin: 2.25rem 0 0.85rem;
+  letter-spacing: -0.02em;
+}
+
+.body h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #dce8e0;
+  margin: 1.75rem 0 0.65rem;
+}
+
+.body p {
+  margin: 0.85rem 0;
+}
+
+.body ul,
+.body ol {
+  margin: 0.85rem 0;
+  padding-left: 1.35rem;
+}
+
+.body li {
+  margin: 0.35rem 0;
+}
+
+.body a {
+  color: #56d364;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.body a:hover {
+  color: #7ae088;
+}
+
+.body pre {
+  margin: 1.35rem 0;
+  padding: 1rem 1.15rem;
+  border-radius: 10px;
+  background: #050a08;
+  border: 1px solid rgba(86, 211, 100, 0.15);
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.body p code,
+.body li code {
+  padding: 0.12rem 0.35rem;
+  border-radius: 5px;
+  background: rgba(86, 211, 100, 0.1);
+  color: #9ee6a8;
+  font-size: 0.88em;
+}
+
+.body pre code {
+  padding: 0;
+  background: none;
+  color: #d4e8da;
+  font-size: inherit;
+}
+
+.body blockquote {
+  margin: 1.25rem 0;
+  padding: 0.5rem 0 0.5rem 1rem;
+  border-left: 3px solid rgba(86, 211, 100, 0.45);
+  color: #9aaf9f;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #56d364;
+  text-decoration: none;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
