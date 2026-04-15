@@ -50,17 +50,10 @@ export default async function BlogDetail({ params }) {
             {formatDisplayDate(blog.date)}
           </time>
           <div className={styles.badges}>
-            {blog.category === "football" ? (
-              <span className={`${styles.badge} ${styles.badgeFootball}`}>
-                Football
-              </span>
-            ) : null}
             {blog.isPDF ? (
               <span className={`${styles.badge} ${styles.badgePdf}`}>PDF</span>
             ) : (
-              <span className={styles.badge}>
-                {blog.category === "football" ? "Analytics" : "Article"}
-              </span>
+              <span className={styles.badge}>Article</span>
             )}
           </div>
         </div>

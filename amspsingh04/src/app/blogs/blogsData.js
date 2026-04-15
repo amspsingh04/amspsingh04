@@ -1,30 +1,7 @@
 const blogs = [
   {
-    id: 5,
-    slug: "football-statsbomb-open-data",
-    category: "football",
-    title: "Data analytics in football using StatsBomb open data",
-    date: "2026-04-20",
-    author: "Shourya Pratap Singh",
-    summary:
-      "How to start a reproducible analytics workflow with open event data: load events, inspect outputs, and reserve space for charts and tables.",
-    mdxPath: "football/statsbomb-open-data.mdx",
-  },
-  {
-    id: 6,
-    slug: "football-argentina-saudi-2022",
-    category: "football",
-    title: "A data analytics view on Argentina vs Saudi Arabia, World Cup 2022",
-    date: "2026-04-24",
-    author: "Shourya Pratap Singh",
-    summary:
-      "Framing the famous upset with progression, shot quality, and defensive pressure—structured for code, outputs, and visuals.",
-    mdxPath: "football/argentina-saudi-2022.mdx",
-  },
-  {
     id: 1,
     slug: "moral",
-    category: "writing",
     title: "Moral Policing is the Key",
     date: "2020-05-19",
     author: "Shourya",
@@ -52,7 +29,6 @@ const blogs = [
   {
     id: 2,
     slug: "AMKR",
-    category: "writing",
     title: "AMKR - Assistive Mechanism of Knowledge Representation",
     date: "2024-01-30",
     author: "Shourya, Amritansh",
@@ -76,7 +52,6 @@ We implemented face recognition using TensorFlow Lite for Raspberry Pi. The PiCa
   {
     id: 3,
     slug: "BIS-review",
-    category: "writing",
     title: "Biomedical Image Segmentation",
     date: "2025-06-04",
     author: "Shourya Pratap Singh",
@@ -88,7 +63,6 @@ We implemented face recognition using TensorFlow Lite for Raspberry Pi. The PiCa
   {
     id: 4,
     slug: "HIS-expts",
-    category: "writing",
     title:
       "Histopathological Image Segmentation on Breast Cancer Whole Slide Images - Different Approaches",
     date: "2025-06-17",

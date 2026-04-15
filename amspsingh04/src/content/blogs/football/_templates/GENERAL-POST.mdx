@@ -1,0 +1,54 @@
+<!--
+  GENERAL TEMPLATE — reuse for every football analytics post.
+
+  Workflow:
+  1) Duplicate this file to: src/content/blogs/football/<your-slug>.mdx
+  2) Replace title/sections below with your article; keep or delete blocks as needed.
+  3) Register { slug, title, date, ..., mdxPath: "football/<your-slug>.mdx" } in src/data/footballPosts.js
+-->
+
+Replace this paragraph with your **lede**: what match, dataset, or question you are analysing and why it matters.
+
+<Callout title="Building blocks in this template" type="note">
+  **Fenced code** (Python/R/SQL), **ConsoleOutput** for logs or notebook-style prints, **AnalyticsFigure** for charts (placeholder or `<img />` / client chart), **DataTable** + GFM tables for small summaries. Delete any section you do not need.
+</Callout>
+
+## Section heading
+
+Supporting text. Use `inline code` for column names, metrics, or file paths.
+
+```python
+# Example: load or reshape data — replace with your pipeline
+import pandas as pd
+
+df = pd.DataFrame({"team": ["A", "B"], "np_xg": [1.2, 0.8]})
+print(df.to_string(index=False))
+```
+
+<ConsoleOutput title="Output">
+{`   team  np_xg
+    A    1.2
+    B    0.8`}</ConsoleOutput>
+
+## Figures
+
+Use the placeholder, or put a saved chart from `public/` inside the figure, or import a `use client` chart component at the top of this file.
+
+<AnalyticsFigure caption="Figure caption — what the reader should take away from the visual." />
+
+## Tables
+
+<DataTable caption="Optional caption for the table.">
+  | Metric | Value |
+  | --- | ---: |
+  | Example | 42 |
+</DataTable>
+
+## Another section
+
+- Bullet points for methodology or takeaways.
+- Link out to [StatsBomb](https://statsbomb.com/) or other references as needed.
+
+<Callout title="Before you publish" type="tip">
+  Confirm `mdxPath` in `footballPosts.js` matches the file under `football/` (not `_templates`). Run `npm run build`.
+</Callout>

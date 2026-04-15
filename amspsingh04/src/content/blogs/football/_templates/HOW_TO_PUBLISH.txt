@@ -1,0 +1,24 @@
+Football analytics — templates only (nothing here is routed until you publish).
+
+1) One reusable MDX scaffold
+   - Duplicate: src/content/blogs/football/_templates/GENERAL-POST.mdx
+   - To:       src/content/blogs/football/<your-slug>.mdx
+   (Keep _templates/GENERAL-POST.mdx as the master copy; do not publish from _templates/.)
+
+2) Edit the new file
+   Replace placeholders with your article. Remove sections you do not need.
+
+3) Register the post in:
+   src/data/footballPosts.js
+   Export an array of { id, slug, title, date, author, summary, mdxPath }.
+   mdxPath must be relative to src/content/blogs/, e.g. "football/my-slug.mdx"
+
+4) Build
+   npm run build
+
+5) Section / sorting
+   - Live posts appear at /football (oldest post first, then newer).
+   - /blogs stays separate (writing + PDFs only).
+
+MDX building blocks (see GENERAL-POST.mdx): fenced code, Callout, ConsoleOutput, AnalyticsFigure, DataTable, GFM tables.
+Optional: import a client chart from src/components/ at the top of your MDX (useDynamicImport is enabled).
