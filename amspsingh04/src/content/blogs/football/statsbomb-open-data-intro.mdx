@@ -1,8 +1,10 @@
-Football analysis is basically a **question-driven retelling of a match**: tracking the events that happened, and the ones no one saw. There is a lot of data that can get generated in every match—the events that happen on the ball, off it, coordination between a subsection of the team’s formations, and the battles that take place between each lineup. There is a unique importance to all of this.
+Football analysis is basically a **question-driven retelling of a match**: tracking the events that happened, and the events that no one saw. There is a lot of data that can get generated in every match—the events that happen on the ball, off it, coordination between a subsection of the team’s formations, and the battles that take place between each lineup. There is a unique importance to all of this.
 
-On-the-ball events let us understand **possession patterns**, **shots**, and overall scoring-style metrics—the kind of thing you might skim on FotMob. Off-the-ball tracking lets us understand **sustained pressure**, **possible threats in play**, and it gives us an overall understanding of *why* an on-the-ball event would have happened. Every single on-the-ball event has at least four or five off-the-ball events that serve as its context—maybe that is part of why that kind of data is paid. Lineup data lets us understand the **shapes and patterns** behind a team’s attacks, defences, and transitions; that gives us a big-picture read on what is likely to happen next.
 
-## So what analyses can we perform, and what can we ask?
+On-the-ball events let us understand **possession patterns**, **shots**, and overall scoring-style metrics — metrics which are of importance to a person who watches football on fotmob. Off-the-ball tracking lets us understand **sustained pressure**, **possible threats in play**, and it gives us an overall understanding of *why* an on-the-ball event would have happened. Every single on-the-ball event has at least four or five off-the-ball events that serve as its context—maybe that is part of why that kind of data is paid. Lineup data lets us understand the **shapes and patterns** behind a team’s attacks, defences, and transitions; that gives us a big-picture read on what is likely to happen throughout the match.
+
+
+## So what analyses can we perform, and what questions do we have to ask?
 
 The most basic layer is to **reconstruct the match timeline**—goals, fouls, corners, offsides. Going a little deeper, we can understand **possessions** and the key phases of offence and defence.
 
@@ -12,7 +14,50 @@ There is a lot we can question, and a lot of it will be asked and answered over 
 
 ## StatsBomb open data—and where we start
 
-Let us understand what the **StatsBomb open data** events are all about, and what we can do with them, taking the example of the **La Liga** match between **Real Madrid** and **Barcelona** on **2017-12-23**, at the **Santiago Bernabéu**.
+Let us understand what the **StatsBomb open data** events are all about, and what we can do with them, taking the example of the **La Liga** match between **Real Madrid** and **Barcelona** on **2017-12-23**, at the **Santiago Bernabéu**. In the events data subdirectory of the StatsBomb open-data git repo, this match is **`9736.json`**.
+
+### Imports
+
+```python
+# all imports
+import json
+from pathlib import Path
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+### File, helpers, and loading events
+
+```python
+# file and function setups
+file = Path("./9736.json")
+
+events = json.loads(file.read_text(encoding="utf-8"))
+
+def match_clock(event):
+    return int(event.get("minute", 0)) * 60 + int(event.get("second", 0))
+
+
+def ev_team(ev):
+    return ev.get("possession_team", {}).get("name") or ev.get("team", {}).get("name")
+
+
+def ev_poss(ev):
+    return ev.get("possession")
+
+
+After running the cell above in a notebook, you get the event count and the sorted list of keys on each event object. Here is a screenshot of that output:
+
+<AnalyticsFigure caption="Notebook output: number of events and sorted keys present on each event dict (StatsBomb 9736.json).">
+  <img
+    src="/football/statsbomb-9736-events-output.png"
+    alt="Jupyter output showing event count and list of keys from StatsBomb events JSON"
+    style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
+  />
+</AnalyticsFigure>
+
+So first things first, we can reconstruct the match timeline—we ask the simple question *“What all happened during the match?”*, and the answer can be found here —
 
 <Callout title="Living post" type="tip">
   This will be an **ever-updating** piece: more sections will be added over time, starting from basic analytics and working upward.
