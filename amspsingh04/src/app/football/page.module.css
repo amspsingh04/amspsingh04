@@ -11,67 +11,16 @@
   margin: 0 auto;
 }
 
-.header {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(86, 211, 100, 0.2);
-}
-
-.title {
-  font-size: clamp(1.65rem, 4vw, 2.1rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: #f2faf5;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: #8aa896;
-  max-width: 38rem;
-}
-
-.oldestNote {
-  margin-top: 0.65rem;
-  font-size: 0.8rem;
-  color: #6a8578;
-}
-
-.templatePanel {
-  margin-bottom: 2.25rem;
-  padding: 1.25rem 1.35rem;
-  border-radius: 12px;
-  border: 1px dashed rgba(86, 211, 100, 0.35);
-  background: rgba(10, 24, 16, 0.65);
-}
-
-.templatePanel h2 {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #56d364;
-  margin-bottom: 0.75rem;
-}
-
-.templatePanel p,
-.templatePanel li {
-  font-size: 0.875rem;
-  line-height: 1.55;
-  color: #a8c2b4;
-}
-
-.templatePanel ul {
-  margin: 0.75rem 0 0;
-  padding-left: 1.2rem;
-}
-
-.path {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.8rem;
-  color: #c8e6d0;
-  word-break: break-all;
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .emptyState {
