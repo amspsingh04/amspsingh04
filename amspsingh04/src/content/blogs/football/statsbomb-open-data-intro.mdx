@@ -19,7 +19,6 @@ Let us understand what the **StatsBomb open data** events are all about, and wha
 ### Imports
 
 ```python
-# all imports
 import json
 from pathlib import Path
 import pandas as pd
@@ -30,22 +29,18 @@ import matplotlib.pyplot as plt
 ### File, helpers, and loading events
 
 ```python
-# file and function setups
 file = Path("./9736.json")
-
 events = json.loads(file.read_text(encoding="utf-8"))
 
 def match_clock(event):
     return int(event.get("minute", 0)) * 60 + int(event.get("second", 0))
 
-
 def ev_team(ev):
     return ev.get("possession_team", {}).get("name") or ev.get("team", {}).get("name")
 
-
 def ev_poss(ev):
     return ev.get("possession")
-
+```
 
 After running the cell above in a notebook, you get the event count and the sorted list of keys on each event object. Here is a screenshot of that output:
 
