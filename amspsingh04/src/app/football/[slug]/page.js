@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import footballPosts from "@/data/footballPosts";
-import { compileBlogMdx } from "@/lib/compileBlogMdx";
+import MdxRemoteBodyLazy from "@/components/mdx/MdxRemoteBodyLazy";
+import { serializeBlogMdx } from "@/lib/compileBlogMdx";
 import styles from "../article.module.css";
 
 export async function generateStaticParams() {
@@ -25,13 +26,12 @@ export default async function FootballPostPage({ params }) {
     notFound();
   }
 
-  let mdxContent = null;
+  let serialized = null;
   if (post.mdxPath) {
     try {
-      const { content } = await compileBlogMdx(post.mdxPath);
-      mdxContent = content;
+      serialized = await serializeBlogMdx(post.mdxPath);
     } catch {
-      mdxContent = null;
+      serialized = null;
     }
   }
 
@@ -55,8 +55,14 @@ export default async function FootballPostPage({ params }) {
         <h1 className={styles.title}>{post.title}</h1>
         <p className={styles.author}>By {post.author}</p>
 
-        {mdxContent ? (
-          <div className={styles.body}>{mdxContent}</div>
+        {serialized?.compiledSource ? (
+          <div className={styles.body}>
+            <MdxRemoteBodyLazy
+              compiledSource={serialized.compiledSource}
+              scope={serialized.scope}
+              frontmatter={serialized.frontmatter}
+            />
+          </div>
         ) : (
           <p>
             Could not load this post. Ensure{" "}
