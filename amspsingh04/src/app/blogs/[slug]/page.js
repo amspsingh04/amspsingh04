@@ -1,6 +1,7 @@
 import Link from "next/link";
 import blogs from "../blogsData";
-import { compileBlogMdx } from "@/lib/compileBlogMdx";
+import MdxRemoteBodyLazy from "@/components/mdx/MdxRemoteBodyLazy";
+import { serializeBlogMdx } from "@/lib/compileBlogMdx";
 import styles from "./article.module.css";
 
 export async function generateStaticParams() {
@@ -28,13 +29,12 @@ export default async function BlogDetail({ params }) {
     );
   }
 
-  let mdxContent = null;
+  let serialized = null;
   if (blog.mdxPath) {
     try {
-      const { content } = await compileBlogMdx(blog.mdxPath);
-      mdxContent = content;
+      serialized = await serializeBlogMdx(blog.mdxPath);
     } catch {
-      mdxContent = null;
+      serialized = null;
     }
   }
 
@@ -61,8 +61,14 @@ export default async function BlogDetail({ params }) {
         <h1 className={styles.title}>{blog.title}</h1>
         <p className={styles.author}>By {blog.author}</p>
 
-        {mdxContent ? (
-          <div className={styles.body}>{mdxContent}</div>
+        {serialized?.compiledSource ? (
+          <div className={styles.body}>
+            <MdxRemoteBodyLazy
+              compiledSource={serialized.compiledSource}
+              scope={serialized.scope}
+              frontmatter={serialized.frontmatter}
+            />
+          </div>
         ) : blog.mdxPath ? (
           <p>Could not load this post. Check that the MDX file exists.</p>
         ) : blog.isPDF ? (

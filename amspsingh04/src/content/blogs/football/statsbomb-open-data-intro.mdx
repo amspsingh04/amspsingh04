@@ -40,6 +40,16 @@ def ev_team(ev):
 
 def ev_poss(ev):
     return ev.get("possession")
+def is_goal_event(ev):
+    return (
+        ev.get("type", {}).get("name") == "Shot"
+        and ev.get("shot", {}).get("outcome", {}).get("name") == "Goal"
+    )
+
+goal_indices = [i for i, ev in enumerate(events) if isinstance(ev, dict) and is_goal_event(ev)]
+
+all_keys = sorted({k for ev in events if isinstance(ev, dict) for k in ev.keys()})
+len(events), all_keys
 ```
 
 After running the cell above in a notebook, you get the event count and the sorted list of keys on each event object. Here is a screenshot of that output:
@@ -52,8 +62,188 @@ After running the cell above in a notebook, you get the event count and the sort
   />
 </AnalyticsFigure>
 
-So first things first, we can reconstruct the match timeline—we ask the simple question *“What all happened during the match?”*, and the answer can be found here —
+So first things first, we can reconstruct the match timeline—we ask the simple question *“What all happened during the match?”*, and the answer can be found here - we just find the shots that were goals, saved, or went wayward, and some passes or actions which were offside, and corners. The code for that is like this:
+```python
+rows = []
+for ev in events:
+    t = ev.get("type", {}).get("name")     ## find the type of event which was happening
+    team = ev.get("possession_team", {}).get("name")  ## which team 
+    player = ev.get("player", {}).get("name")     ## who was the player
+    clock = match_clock(ev)       ## when
+    
+    ## here we can see the events such as different kinds of shots, corners, offsides, etc.
+    if t == "Shot":
+        rows.append((clock, team, ev.get("shot", {}).get("outcome", {}).get("name")+" shot", player))
+
+    if t == "Pass" and ev.get("pass", {}).get("type", {}).get("name") in ["Corner", "Pass Offside"]:
+        rows.append((clock, team, ev.get("pass", {}).get("type", {}).get("name"), player))
+
+    if t == "Offside":
+        rows.append((clock, team, "Offside", player))
+  
+## arrange that and show it in a dataframe format  
+timeline = pd.DataFrame(rows, columns=["clock_s", "team", "event", "player"])
+timeline.sort_values("clock_s").head(3)
+```
+
+and the first three events are these:
+
+<AnalyticsFigure caption="First three timeline rows from the dataframe (clock, team, event, player).">
+  <img
+    src="/football/statsbomb-first-three-events.png"
+    alt="DataFrame head showing first three match timeline events"
+    style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
+  />
+</AnalyticsFigure>
+
+
+I think we should now dig deeper and find out what was the possession pattern for the teams, and what events influenced the passage of play. The simplest way to do that would be to look at who had a greater share of possession at each point of time, and what event happened when.
+That would be quite a few blocks of code, so let me describe it first; From the event feed you rebuild each team’s possession time in seconds, turn that into a running share of the ball by match minute, then plot those shares and mark goal times.
+You can see the graph here, the teams are marked, and the three lines happen to be the goals scored by 
+<AnalyticsFigure caption="Possesion graph">
+  <img
+    src="/football/statsbomb-possession.png"
+    alt="Possesion graph"
+    style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
+  />
+</AnalyticsFigure>
+
+```python
+df = pd.DataFrame([{
+    "clock_s": match_clock(ev),
+    "possession": ev.get("possession"),
+    "poss_team": (ev.get("possession_team") or {}).get("name"),
+} for ev in events])
+df = df.dropna(subset=["clock_s", "possession", "poss_team"]).sort_values("clock_s")
+
+intervals = (df.groupby(["possession", "poss_team"], as_index=False)
+              .agg(start=("clock_s", "min"), end=("clock_s", "max")))[["poss_team", "start", "end"]]
+teams = sorted(intervals["poss_team"].unique())
+
+def overlap_0_t(start, end, t):
+    return max(0, min(end, t) - max(start, 0))
+
+match_end = int(df["clock_s"].max())
+rows = []
+for t in range(60, match_end + 60, 60):
+    team_time = {
+        tm: sum(overlap_0_t(s, e, t) for s, e in intervals.loc[intervals["poss_team"] == tm, ["start", "end"]].itertuples(index=False, name=None))
+        for tm in teams
+    }
+    tot = sum(team_time.values()) or 1.0
+    rows.append({"minute": t // 60, **{tm: 100.0 * team_time[tm] / tot for tm in teams}})
+
+running = pd.DataFrame(rows)
+
+goals = timeline[timeline["event"] == "Goal shot"].copy()
+
+if "minute" not in goals.columns:
+    goals["minute"] = goals["clock_s"] / 60.0
+
+fig, ax = plt.subplots(figsize=(12,4))
+
+for team in teams:
+    ax.plot(running["minute"], running[team], label=team)
+
+# goal markers
+for _, g in goals.iterrows():
+    team = g["team"]
+    ax.axvline(g["minute"], linestyle="--", alpha=0.7, linewidth=1)
+
+ax.set_ylim(0, 100)
+ax.set_ylabel("Running possession % (cumulative)")
+ax.set_xlabel("Minute")
+ax.legend()
+ax.grid(True, alpha=0.3)
+plt.show()
+```
+
+Now, here it looks like the first goal was on the back of sustained pressure over a long passage of play, the second seems to come against the run of play, and the last one seems to be on the back of Barca controlling the game in the final 15-20 minutes. But can we validate that somehow? 
+Let us try to see the 200 events before each goal, and see if that tells us something. We can create a window of events before the goal, and take each event and give them a threat score. Then we can analyse how the threat fluctuated, how the progress happened, and what was exactly transpiring on the ground. The first and easy way to do it would be to create an arbitrary threat index based on all events that are within the dataset, and lets see how that maps? The code blocks needed for this would be quite a lot, so let me just put them out for you in my github, which I will link somewhere on this page.
+
+So what is the threat in the first goal like:
+<AnalyticsFigure caption="First goal threat graph">
+  <img
+    src="/football/statsbomb-firstgoal-threat.png"
+    alt="FGT graph"
+    style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
+  />
+</AnalyticsFigure>
+
+Looks like our assumption was correct that the first goal came on the back of sustained pressure from Barca. Sounds like we have been validated in one threat vs possession comparison. Moving to the second one:
+<AnalyticsFigure caption="Second goal threat graph">
+  <img
+    src="/football/statsbomb-secgoal-threat.png"
+    alt="SGT graph"
+    style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
+  />
+</AnalyticsFigure>
+
+Here we can see that something happened around the 300th event after which it was just Barca dominating up until the goal time. 
+Barcelona initiated a quick transition from a foul, progressing play with a long switch and forward passes into Alba and Paulinho, but the move broke down due to an incomplete pass. 
+Madrid then recycled possession through Navas before losing it again, indicating a mixed sequence of buildup success and instability, which is reasonably captured by the threat model.
+This again suggests that the threat model is broadly aligned with the actual flow of play, capturing both  buildup and the eventual loss of possession.
+| idx | clock_s | type           | team         | player                          | duration | pass_length | pass_outcome |
+|-----|--------|----------------|--------------|----------------------------------|----------|-------------|--------------|
+| 300 | 3630   | Pressure       | Real Madrid  | Carlos Henrique Casimiro        | 0.000    | 0.000000    | None         |
+| 301 | 3632   | Foul Committed | Real Madrid  | Marcelo Vieira da Silva Júnior  | 0.000    | 0.000000    | None         |
+| 302 | 3632   | Foul Won       | Barcelona    | Lionel Andrés Messi Cuccittini  | 0.000    | 0.000000    | None         |
+| 303 | 3655   | Pass           | Barcelona    | Sergi Roberto Carnicer          | 0.000    | 59.774580   | None         |
+| 304 | 3659   | Ball Receipt*  | Barcelona    | Luis Alberto Suárez Díaz        | 0.000    | 0.000000    | None         |
+| 305 | 3662   | Pass           | Barcelona    | Luis Alberto Suárez Díaz        | 0.000    | 12.806249   | None         |
+| 306 | 3663   | Ball Receipt*  | Barcelona    | Jordi Alba Ramos                | 0.000    | 0.000000    | None         |
+| 307 | 3663   | Carry          | Barcelona    | Jordi Alba Ramos                | 1.200    | 0.000000    | None         |
+| 308 | 3664   | Pass           | Barcelona    | Jordi Alba Ramos                | 0.000    | 20.591260   | None         |
+| 309 | 3665   | Ball Receipt*  | Barcelona    | José Paulo Bezzera Maciel Júnior| 0.000    | 0.000000    | None         |
+| 310 | 3665   | Carry          | Barcelona    | José Paulo Bezzera Maciel Júnior| 0.040    | 0.000000    | None         |
+| 311 | 3665   | Pass           | Barcelona    | José Paulo Bezzera Maciel Júnior| 0.000    | 17.464249   | Incomplete   |
+| 312 | 3667   | Ball Receipt*  | Barcelona    | Luis Alberto Suárez Díaz        | 0.000    | 0.000000    | None         |
+| 313 | 3667   | Pass           | Real Madrid  | Raphaël Varane                  | 0.000    | 17.804493   | None         |
+| 314 | 3669   | Ball Receipt*  | Real Madrid  | Keylor Navas Gamboa             | 0.000    | 0.000000    | None         |
+| 315 | 3669   | Carry          | Real Madrid  | Keylor Navas Gamboa             | 2.027    | 0.000000    | None         |
+| 316 | 3671   | Pass           | Real Madrid  | Keylor Navas Gamboa             | 0.000    | 52.392746   | None         |
+| 317 | 3674   | Ball Receipt*  | Real Madrid  | Luka Modrić                     | 0.000    | 0.000000    | None         |
+| 318 | 3674   | Pass           | Real Madrid  | Luka Modrić                     | 0.000    | 13.341664   | Incomplete   |
+| 319 | 3675   | Ball Recovery  | Barcelona    | Thomas Vermaelen                | 0.000    | 0.000000    | None         |
+| 320 | 3675   | Carry          | Barcelona    | Thomas Vermaelen                | 1.440    | 0.000000    | None         |
+
+If we also look at the end, it seems as if RMA threat falls off somehow, let us look at what the final 10 events are:
+| idx | clock_s | type           | team         | player                          | duration | pass_length |
+|-----|--------|----------------|--------------|----------------------------------|----------|-------------|
+| 390 | 3747   | Ball Receipt*  | Barcelona    | Luis Alberto Suárez Díaz        | 0.0      | 0.0         | 
+| 391 | 3747   | Shot           | Barcelona    | Luis Alberto Suárez Díaz        | 0.0      | 0.0         | 
+| 392 | 3748   | Goal Keeper    | Real Madrid  | Keylor Navas Gamboa             | 0.0      | 0.0         | 
+| 393 | 3748   | Clearance      | Real Madrid  | Raphaël Varane                  | 0.0      | 0.0         | 
+| 394 | 3749   | Error          | Real Madrid  | Raphaël Varane                  | 0.0      | 0.0         | 
+| 395 | 3749   | Ball Recovery  | Barcelona    | José Paulo Bezzera Maciel Júnior| 0.0      | 0.0         | 
+| 396 | 3749   | Shot           | Barcelona    | José Paulo Bezzera Maciel Júnior| 0.0      | 0.0         | 
+| 397 | 3750   | Block          | Real Madrid  | Daniel Carvajal Ramos           | 0.0      | 0.0         | 
+| 398 | 3750   | Goal Keeper    | Real Madrid  | Keylor Navas Gamboa             | 0.0      | 0.0         | 
+| 399 | 3751   | Foul Committed | Real Madrid  | Daniel Carvajal Ramos           | 0.0      | 0.0         | 
+| 400 | 5213   | Pressure       | Real Madrid  | Marco Asensio Willemsen         | 0.0      | 0.0         | 
+
+And Dani Carvajal commits a foul there, which is when he handles the ball, is sent off, and gives away a penalty, which can be said to be a bit against the run of play (the ball was going in anyway, Carvajal and his antics just came in the way). Next event at this point is the goal. This gets captured by the threat charts.
+
+Looks like we have made some good progress with validating our threat model against our possession presumptions. But for the third goal it is something like this:
+<AnalyticsFigure caption="Third goal threat graph">
+  <img
+    src="/football/statsbomb-tgoal-threat.png"
+    alt="TGT graph"
+    style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
+  />
+</AnalyticsFigure>
+Which seems to suggest that it is more or less a shock goal. Is it? Well it will be too much if I add another output or code block, but let me tell you that in the leadup, Vidal wins a corner after a beautiful play involving Messi, Vidal and Pique (Pique wins the ball around 30 events before the goal). Once the short corner is played, Messi drives it a little back, and then carries it forward and puts in a low cross to Vidal who bags it home. All this while, RMA sits back and is trying to see out the goal. This behaviour is well captured in the fact that the RMA threat remains constant in the final 50 events, and the various ball wins and good plays increase Barca's threat until the goal. However, for most of the leadup, it is RMA's goal to concede, and somehow they concede it. Just unlucky for RMA and a shock goal for Barca right at the end. 
+
+
+So that has been some analysis regarding the goals and the plays and the threats. Lets look at the threat graph for the entire match. What is this telling us? I don't think it is something we have't already figured out. 
+<AnalyticsFigure caption="Entire threat graph">
+  <img
+    src="/football/statsbomb-total-threat.png"
+    alt="Threat graph"
+    style={{ width: "200px", height: "200px", borderRadius: "8px", display: "block" }}
+  />
+</AnalyticsFigure>
 
 <Callout title="Living post" type="tip">
-  This will be an **ever-updating** piece: more sections will be added over time, starting from basic analytics and working upward.
+  This will be a constantly-updating piece: more sections will be added over time, starting from basic analytics and working upward.
 </Callout>

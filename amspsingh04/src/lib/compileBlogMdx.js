@@ -1,23 +1,21 @@
 import fs from "node:fs";
 import path from "node:path";
-import { compileMDX } from "next-mdx-remote/rsc";
+import { serialize } from "next-mdx-remote/serialize";
 import remarkGfm from "remark-gfm";
-import mdxComponents from "@/components/mdx/mdxComponents";
 
 const contentDir = path.join(process.cwd(), "src/content/blogs");
 
-export async function compileBlogMdx(relativePath) {
+/**
+ * Serialize MDX for <MDXRemote /> (see MdxRemoteBody.jsx).
+ * Uses next-mdx-remote/serialize instead of /rsc compileMDX — compatible with React 19 dev.
+ */
+export async function serializeBlogMdx(relativePath) {
   const fullPath = path.join(contentDir, relativePath);
   const source = fs.readFileSync(fullPath, "utf8");
-  return compileMDX({
-    source,
-    components: mdxComponents,
-    options: {
-      mdxOptions: {
-        remarkPlugins: [remarkGfm],
-        // Allow `import MyChart from '...'` in MDX for client-side charts
-        useDynamicImport: true,
-      },
+  return serialize(source, {
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      useDynamicImport: true,
     },
   });
 }
