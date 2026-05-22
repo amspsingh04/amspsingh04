@@ -17,7 +17,7 @@ const footballPosts = [
       "Question-driven match retelling with on-ball and off-ball context; what we can ask of open data, starting from El Clásico 2017 at the Bernabéu—an updating series opener.",
     mdxPath: "football/statsbomb-open-data-intro.mdx",
   },
-  /*
+  
   {
     id: 2,
     slug: "arg_vs_sau",
@@ -28,6 +28,7 @@ const footballPosts = [
       "Progression, defensive line, and shot quality around the upset—structured for reproducible breakdowns.",
     mdxPath: "football/arg_vs_sau.mdx",
   },
+  /*
   {
     id: 3,
     slug: "fcb-5-0-rma-2010",
